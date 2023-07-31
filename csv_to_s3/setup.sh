@@ -30,7 +30,7 @@ download_zip_file() {
     log_message "Downloading the zip file"
     mkdir -p "$project_dir"
     cd "$project_dir" || exit 1
-    wget -q https://github.com/dogukannulu/send_data_to_aws_services/csv_to_s3/raw/main/csv_to_s3.zip
+    wget -q https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_s3/csv_to_s3.zip
 }
 
 # Function to unzip the files
