@@ -11,25 +11,40 @@ This part of the repo is created for:
 
 ## Steps
 
-1. First, we have to run this command to bring the `setup.sh` into the EC2 instance (We have to be located in `/`).
+1. We have to first create the working directory `/project`(We have to be located in `/`).
+```
+sudo mkdir /project
+cd /project
+```
+
+2. First, we have to run this command to bring the `setup.sh` into the EC2 instance (We have to be located in `/`).
 ```
 sudo curl -O https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/csv_to_kinesis_refactor/csv_to_kinesis_streams/setup.sh
 ```
 
-2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-55 in `setup.sh` according to your use case with `sudo vi setup.sh`. To execute the shell script we should run the following command.
+3. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-55 in `setup.sh` according to your use case with `sudo vi setup.sh`. To execute the shell script we should run the following command.
 ```
 sudo chmod +x setup.sh
 ```
 
-3. After modifications (if necessary), we can create the working directory `/project` and execute the shell script.
+4. We should download the zip file that includes `csv_to_kinesis_streams.py` and `requirements.txt`
+```
+sudo wget https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip
+```
+
+5. After modifications (if necessary), we can execute the shell script.
 ```
 sudo mkdir project
 sudo ./setup.sh
+```
+
+6. We can monitor the live logs since it will print every single record.
+```
+sudo tail -f /project/csv_to_kinesis_streams.log
 ```
 
 ## Notes
 
 - All the processes will be running in `/project` directory after executing `setup.sh`
 - You can see all the logs in `/project/csv_to_kinesis_streams.log` 
-- zip file includes `csv_to_kinesis_streams.py` and `requirements.txt`
 - Shell script will download necessary packages, libraries first. Then, will install requirements and run the Python script

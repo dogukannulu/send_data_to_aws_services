@@ -27,6 +27,11 @@ sudo mkdir project
 sudo ./setup.sh
 ```
 
+4. We can monitor the live logs.
+```
+sudo tail -f /project/upload_csv_to_s3.log
+```
+
 ## Notes
 
 - All the processes will be running in `/project` directory after executing `setup.sh`
