@@ -24,7 +24,7 @@ class KinesisStreamer:
 
     def create_stream_if_not_exists(self, stream_name):
         if not self.stream_exists(stream_name):
-            self.kinesis_client.create_stream(StreamName=stream_name, ShardCount=1)
+            self.kinesis_client.create_stream(StreamName=stream_name, ShardCount=3)
             logger.info(f"Stream '{stream_name}' created.")
         else:
             logger.info(f"Stream '{stream_name}' already exists.")
