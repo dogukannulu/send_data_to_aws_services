@@ -32,7 +32,7 @@ download_zip_file() {
     log_message "Downloading the zip file"
     mkdir -p "$project_dir"
     cd "$project_dir" || exit 1
-    wget -q "$zip_file_url"
+    curl -O "$zip_file_url"
 }
 
 # Function to unzip the files
