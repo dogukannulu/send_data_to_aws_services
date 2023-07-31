@@ -26,10 +26,8 @@ install_packages() {
 
 # Function to download the zip file
 download_zip_file() {
-    local zip_file_url="https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip"
-
     log_message "Downloading the zip file"
-    sudo wget -q curl $zip_file_url
+    sudo wget -q https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip
 }
 
 # Function to unzip the files
