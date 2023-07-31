@@ -14,21 +14,7 @@ logger = logging.getLogger(__name__)
 class KinesisStreamer:
     def __init__(self, region_name='eu-central-1'):
         self.kinesis_client = boto3.client('kinesis', region_name=region_name)
-        self.kinesis_resource = boto3.resource('kinesis', region_name=region_name)
 
-    def stream_exists(self, stream_name):
-        try:
-            self.kinesis_resource.describe_stream(StreamName=stream_name)
-            return True
-        except self.kinesis_client.exceptions.ResourceNotFoundException:
-            return False
-
-    def create_stream_if_not_exists(self, stream_name):
-        if not self.stream_exists(stream_name):
-            self.kinesis_resource.create_stream(StreamName=stream_name, ShardCount=3)
-            logger.info(f"Stream '{stream_name}' created.")
-        else:
-            logger.info(f"Stream '{stream_name}' already exists.")
 
     def send_record(self, stream_name, data):
         response = self.kinesis_client.put_record(
@@ -54,9 +40,6 @@ def define_arguments():
 
 def send_csv_to_kinesis(stream_name, interval, max_rows, csv_url):
     kinesis_streamer = KinesisStreamer()
-
-    # Create the Kinesis Data Stream if it does not exist
-    kinesis_streamer.create_stream_if_not_exists(stream_name)
 
     response = requests.get(csv_url)
     response.raise_for_status()
