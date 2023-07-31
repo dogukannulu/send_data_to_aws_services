@@ -14,17 +14,18 @@ logger = logging.getLogger(__name__)
 class KinesisStreamer:
     def __init__(self, region_name='eu-central-1'):
         self.kinesis_client = boto3.client('kinesis', region_name=region_name)
+        self.kinesis_resource = boto3.resource('kinesis', region_name=region_name)
 
     def stream_exists(self, stream_name):
         try:
-            self.kinesis_client.describe_stream(StreamName=stream_name)
+            self.kinesis_resource.describe_stream(StreamName=stream_name)
             return True
         except self.kinesis_client.exceptions.ResourceNotFoundException:
             return False
 
     def create_stream_if_not_exists(self, stream_name):
         if not self.stream_exists(stream_name):
-            self.kinesis_client.create_stream(StreamName=stream_name, ShardCount=3)
+            self.kinesis_resource.create_stream(StreamName=stream_name, ShardCount=3)
             logger.info(f"Stream '{stream_name}' created.")
         else:
             logger.info(f"Stream '{stream_name}' already exists.")
