@@ -26,8 +26,11 @@ install_packages() {
 
 # Function to download the zip file
 download_zip_file() {
+    local project_dir="/project"
     log_message "Downloading the zip file"
-    sudo wget -q https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip
+    mkdir "$project_dir"
+    cd "$project_dir" || exit 1
+    wget -q https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_s3/csv_to_s3.zip
 }
 
 # Function to unzip the files
