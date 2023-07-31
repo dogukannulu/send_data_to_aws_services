@@ -49,9 +49,9 @@ install_python_libraries() {
 # Function to execute the Python script
 execute_python_script() {
     local csv_to_s3_script="csv_to_s3.py"
-    local bucket_name="s3_trigger_lambda_to_rds_bucket"
+    local bucket_name="csv_to_s3"
     local object_key="dirty_store_transactions/dirty_store_transactions.csv"
-    local data_url="https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/csv_to_s3/master/dirty_store_transactions.csv"
+    local data_url="https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/csv_to_s3_refactor/csv_to_s3/dirty_store_transactions.csv"
     
     log_message "Executing the Python script"
     chmod +x "$csv_to_s3_script"
