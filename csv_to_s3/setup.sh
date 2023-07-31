@@ -4,7 +4,7 @@ log_file="/project/upload_csv_to_s3.log"
 
 # Function to log messages to a log file
 log_message() {
-    local log_text=$1
+    local log_text="$1"
     echo "$(date +'%Y-%m-%d %H:%M:%S') - $log_text" >> "$log_file"
 }
 
@@ -30,7 +30,7 @@ download_zip_file() {
     log_message "Downloading the zip file"
     mkdir -p "$project_dir"
     cd "$project_dir" || exit 1
-    curl -L -O https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_s3/csv_to_s3.zip
+    wget -q https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_s3/csv_to_s3.zip
 }
 
 # Function to unzip the files
