@@ -28,11 +28,11 @@ install_packages() {
 download_zip_file() {
     local project_dir="/project"
     local zip_file_url="https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip"
-    
+    local destination_file="$project_dir/csv_to_kinesis_streams.zip"
+
     log_message "Downloading the zip file"
     mkdir -p "$project_dir"
-    cd "$project_dir" || exit 1
-    curl -O "$zip_file_url"
+    wget -q -O "$destination_file" "$zip_file_url"
 }
 
 # Function to unzip the files
