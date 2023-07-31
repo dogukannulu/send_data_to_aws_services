@@ -24,11 +24,6 @@ install_packages() {
     yum install -y "${packages[@]}"
 }
 
-# Function to download the zip file
-download_zip_file() {
-    wget https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_to_kinesis_streams/csv_to_kinesis_streams.zip
-}
-
 # Function to unzip the files
 unzip_files() {
     log_message "Unzipping the files"
