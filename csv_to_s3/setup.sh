@@ -49,7 +49,7 @@ install_python_libraries() {
 # Function to execute the Python script
 execute_python_script() {
     local csv_to_s3_script="csv_to_s3.py"
-    local bucket_name="csv-to-s3-project"
+    local bucket_name="csv-to-s3-project-dogukan-ulu"
     local object_key="dirty_store_transactions/dirty_store_transactions.csv"
     local data_url="https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/csv_to_s3/master/dirty_store_transactions.csv"
     
