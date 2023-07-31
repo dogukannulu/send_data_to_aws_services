@@ -19,7 +19,8 @@ class KinesisStreamer:
     def send_record(self, stream_name, data):
         response = self.kinesis_client.put_record(
             StreamName=stream_name,
-            Data=data
+            Data=data,
+            PartitionKey="No"
         )
         return response['SequenceNumber']
 
