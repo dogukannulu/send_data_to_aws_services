@@ -16,11 +16,11 @@ class KinesisStreamer:
         self.kinesis_client = boto3.client('kinesis', region_name=region_name)
 
 
-    def send_record(self, stream_name, data):
+    def send_record(self, stream_name, data, partition_key="No"):
         response = self.kinesis_client.put_record(
             StreamName=stream_name,
             Data=data,
-            PartitionKey="No"
+            PartitionKey=partition_key
         )
         return response['SequenceNumber']
 

@@ -16,9 +16,9 @@ This part of the repo is created for:
 sudo curl -O https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/main/csv_to_s3/setup.sh
 ```
 
-2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-54 in `setup.sh` according to your use case. To modify or execute the shell script we should run the following command.
+2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-54 in `setup.sh` according to your use case with `sudo vi setup.sh`. To execute the shell script we should run the following command.
 ```
-sudo chmod u+rwx setup.sh
+sudo chmod +x setup.sh
 ```
 
 3. After modifications (if necessary), we can create the working directory `/project` and execute the shell script.

@@ -4,7 +4,7 @@ This process will be running inside an EC2 instance. Therefore, no AWS credentia
 
 This part of the repo is created for:
 
-- Check if the Kinesis stream exists or not. If not, create a new stream.
+- We should create the Kinesis Data Stream from the AWS Console and define the function with the same exact stream name.
 - The CSV file will be retrieved from a URL and will be streaming into the stream with predefined interval and length.
 - The CSV won't be modified. If modification is required, you can add to the Python script.
 - The script will be valid for the region `eu-central-1`, but you can modify the region part if necessary.
@@ -16,9 +16,9 @@ This part of the repo is created for:
 sudo curl -O https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/csv_to_kinesis_refactor/csv_to_kinesis_streams/setup.sh
 ```
 
-2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-55 in `setup.sh` according to your use case. To modify or execute the shell script we should run the following command.
+2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-55 in `setup.sh` according to your use case with `sudo vi setup.sh`. To execute the shell script we should run the following command.
 ```
-sudo chmod u+rwx setup.sh
+sudo chmod +x setup.sh
 ```
 
 3. After modifications (if necessary), we can create the working directory `/project` and execute the shell script.
