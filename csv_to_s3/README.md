@@ -1,0 +1,33 @@
+# Overview
+
+This process will be running inside an EC2 instance. Therefore, no AWS credential is defined or used inside the scripts. If you want to run locally or somewhere else, you have to add AWS credentials to the scripts.
+
+This part of the repo is created for:
+
+- Create a new S3 bucket or return the related logs if already exists
+- Upload a CSV file from a URL into the new bucket with predefined object key
+- The CSV won't be modified. If modification is required, you can add to the Python script.
+- The script will be valid for the region `eu-central-1`, but you can modify the region part if necessary.
+
+## Steps
+
+1. First, we have to run this command to bring the `setup.sh` into the EC2 instance (Regardless of where we are located).
+```
+sudo curl -O https://github.com/dogukannulu/send_data_to_aws_services/blob/csv_to_s3_refactor/csv_to_s3/setup.sh
+```
+
+2. The shell script runs the Python script with predefined command line arguments. You can modify lines 51-54 in `setup.sh` according to your use case. To modify or execute the shell script we should run the following command.
+```
+sudo chmod u+rwx setup.sh
+```
+
+3. After modifications (if necessary), we can execute the shell script.
+```
+./setup.sh
+```
+
+## Notes
+
+- You can see all the logs in `/project/upload_csv_to_s3.log` 
+- zip file includes `csv_to_s3.py` and `requirements.txt`
+- Shell script will download necessary packages, libraries first. Then, will install requirements and run the Python script
