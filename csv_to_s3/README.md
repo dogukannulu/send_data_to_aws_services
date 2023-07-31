@@ -28,6 +28,7 @@ sudo chmod u+rwx setup.sh
 
 ## Notes
 
+- All the processes will be running in `/project` directory after executing `setup.sh`
 - You can see all the logs in `/project/upload_csv_to_s3.log` 
 - zip file includes `csv_to_s3.py` and `requirements.txt`
 - Shell script will download necessary packages, libraries first. Then, will install requirements and run the Python script
