@@ -1,0 +1,7 @@
+boto3
+csv
+time
+logging
+argparse
+requests
+sys
