@@ -11,7 +11,7 @@ This part of the repo is created for:
 
 ## Steps
 
-1. First, we have to run this command to bring the `setup.sh` into the EC2 instance (Regardless of where we are located).
+1. First, we have to run this command to bring the `setup.sh` into the EC2 instance (We have to be located in `/`).
 ```
 sudo curl -O https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_services/main/csv_to_s3/setup.sh
 ```
@@ -21,8 +21,9 @@ sudo curl -O https://raw.githubusercontent.com/dogukannulu/send_data_to_aws_serv
 sudo chmod u+rwx setup.sh
 ```
 
-3. After modifications (if necessary), we can execute the shell script.
+3. After modifications (if necessary), we can create the working directory `/project` and execute the shell script.
 ```
+sudo mkdir project
 sudo ./setup.sh
 ```
 
