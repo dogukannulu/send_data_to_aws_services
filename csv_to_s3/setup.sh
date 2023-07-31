@@ -1,6 +1,8 @@
 #!/bin/bash
 
 log_file="/project/upload_csv_to_s3.log"
+mkdir /project
+touch /project/upload_csv_to_s3.log
 
 # Function to log messages to a log file
 log_message() {
