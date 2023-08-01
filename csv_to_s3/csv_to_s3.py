@@ -32,7 +32,7 @@ class S3Uploader:
             elif e.response['Error']['Code'] == 'BucketAlreadyExists':
                 logger.warning(f"Bucket '{name}' already exists and is owned by someone else.")
             else:
-                logger.warning("An error occurred:", e)
+                logger.warning("An unexpected error occured while creating the S3 bucket:", e)
 
     def put_object(self, bucket_name, object_key, csv_data):
         """
@@ -42,7 +42,7 @@ class S3Uploader:
             self.s3_client.put_object(Body=csv_data, Bucket=bucket_name, Key=object_key)
             logger.info('Object uploaded into S3 successfully')
         except ClientError as e:
-            logger.warning("An error occurred while putting the object into S3:", e)
+            logger.warning("An error occurred while putting the object into S3 related to ClientError:", e)
         except Exception as e:
             logger.warning("An unexpected error occurred while putting the object into S3:", e)
 
