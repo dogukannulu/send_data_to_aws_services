@@ -17,12 +17,16 @@ class KinesisStreamer:
 
 
     def send_record(self, stream_name, data, partition_key="No"):
-        response = self.kinesis_client.put_record(
-            StreamName=stream_name,
-            Data=data,
-            PartitionKey=partition_key
-        )
-        return response['SequenceNumber']
+        try:
+            response = self.kinesis_client.put_record(
+                StreamName=stream_name,
+                Data=data,
+                PartitionKey=partition_key
+            )
+            return response['SequenceNumber']
+        except self.kinesis_client.exceptions.ResourceNotFoundException:
+            logger.error(f"Kinesis stream '{stream_name}' not found. Please ensure the stream exists.")
+            sys.exit(1)
 
 
 def define_arguments():
