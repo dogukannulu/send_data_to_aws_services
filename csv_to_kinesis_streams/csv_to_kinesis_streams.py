@@ -61,7 +61,7 @@ def send_csv_to_kinesis(stream_name, interval, max_rows, csv_url):
             time.sleep(interval)
 
             rows_written += 1
-            if rows_written >= max_rows:
+            if rows_written >= max_rows or max_rows > len(csv_data.splitlines()) - 1:
                 break
     except KeyboardInterrupt:
         logger.info("Received KeyboardInterrupt signal. Stopping the CSV-to-Kinesis streaming process.")
