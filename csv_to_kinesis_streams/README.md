@@ -34,7 +34,6 @@ sudo wget https://github.com/dogukannulu/send_data_to_aws_services/raw/main/csv_
 
 5. After modifications (if necessary), we can execute the shell script.
 ```
-sudo mkdir project
 sudo ./setup.sh
 ```
 
